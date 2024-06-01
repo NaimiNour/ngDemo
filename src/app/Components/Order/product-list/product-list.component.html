@@ -1,0 +1,55 @@
+<!-- <div class="mb-3">
+    <label for="prdCat" class="form-label">Category:</label>
+    <select class="form-control" name="cat" id="prdCat" [(ngModel)]="selectedCatID">
+      
+        <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
+    </select>
+</div> -->
+<div class="text-secondary">
+    [To be Removed] for test:
+    {{sentCatID}}
+    <!-- <td><button type="button" class="btn btn-primary" (click)="change()">Change Category</button> -->
+
+</div>
+<table class="table">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Image</th>
+            <th>Av Quantity</th>
+            <th>Prix</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <!-- TrackBy used to specify iterable objects identity, and 
+        to enhance performance of ngfor in case of changes to the collection
+    , and updated the changed object without rebuild the DOM -->
+    <!-- ngClass is more powerful. It allows you to bind a string of classes,
+         an array of strings, or an object like in your example. -->
+
+        <tr *ngFor="let prd of prdList "  [class.d-none]="sentCatID!=prd.categoryID"
+        [class.bg-warning]="prd.quantity==0"
+        [style.background-color]="(prd.quantity==0)? 'yellow' :'lightgray'" > 
+        <!-- si quantity 0 met en jaune sinon en gris 
+          [class.d-none]="selectedCatID!=prd.categoryID"
+          let i=index trackBy:trackprdByFn
+        -->
+            <td>{{prd.id}}</td>
+            <td>{{prd.name}}</td>
+            <td><img appLightBox="red" defaultColor="gray" 
+                [src]="prd.imgURL" alt=""></td>
+            <td>{{prd.quantity}}</td>
+            <td>{{prd.price}}</td>
+            <!-- Template variable highLightColor -->
+            <td><input #itemsCount type="number" class="form-control"></td>
+            <td><button type="button" class="btn btn-secondary" (click)="buy(prd.price,itemsCount.value)">Buy</button>
+            </td>
+        </tr>
+    </tbody>
+
+</table>
+<hr class="text-danger">
+[To be removed for test :]
+<h3>Order Total price: {{orderTotalPrice}}</h3>

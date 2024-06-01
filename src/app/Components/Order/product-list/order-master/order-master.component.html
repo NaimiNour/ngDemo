@@ -1,0 +1,15 @@
+<h2>Create your order</h2>
+<div class="mb-3">
+    <label for="prdCat" class="form-label">Category:</label>
+    <select class="form-control" name="cat" id="prdCat" [(ngModel)]="selectedCatID">
+        <!-- [(ngModel)]="selectedCategoryID" -->
+        <option *ngFor="let cat of catList" [value]="cat.id" >{{cat.name}}</option>
+    </select>
+</div>
+<hr>
+<div class =" bg-warning">
+<app-product-list [sentCatID]="selectedCatID"></app-product-list> 
+</div>
+<hr>
+ 
+<h3>Order Total Price : {{orderTotalPrice}} </h3>
